@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import MarketingNav from "../../components/MarketingNav";
-
 export default function HomePage() {
   return (
     <div className="marketing-page">

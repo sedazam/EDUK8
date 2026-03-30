@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import AppShell from "./components/AppShell";
+import AppShell from "./components/tasks/AppShell";
 import DashboardPage from "./pages/app/DashboardPage";
 import ChildrenPage from "./pages/app/ChildrenPage";
 import HomePage from "./pages/app/HomePage";

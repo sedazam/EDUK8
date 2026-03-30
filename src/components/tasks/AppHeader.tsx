@@ -1,5 +1,5 @@
-import { Bell, RotateCcw } from 'lucide-react';
-import { useAppContext } from '../context/AppContext';
+import { Bell, RotateCcw } from "lucide-react";
+import { useAppContext } from "../../context/AppContext";
 
 export default function AppHeader() {
   const { resetDemoData } = useAppContext();
@@ -12,10 +12,18 @@ export default function AppHeader() {
       </div>
 
       <div className="app-header__actions">
-        <button className="icon-button" type="button" aria-label="Notifications">
+        <button
+          className="icon-button"
+          type="button"
+          aria-label="Notifications"
+        >
           <Bell size={18} />
         </button>
-        <button className="button button--ghost" type="button" onClick={resetDemoData}>
+        <button
+          className="button button--ghost"
+          type="button"
+          onClick={resetDemoData}
+        >
           <RotateCcw size={16} /> Reset demo data
         </button>
       </div>
