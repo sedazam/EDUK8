@@ -1,19 +1,24 @@
 export default function WelcomeBanner() {
   return (
-    <div className="rounded-3xl border bg-white p-6 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div>
-          <p className="text-sm font-medium text-primary">Welcome back</p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-            Let’s keep home learning simple and consistent
+    <div className="rounded-[28px] border bg-white p-6 shadow-sm md:p-8">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="max-w-2xl">
+          <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+            Home learning made simpler
+          </span>
+
+          <h2 className="mt-4 text-2xl font-bold tracking-tight md:text-4xl">
+            Build stronger learning habits at home
           </h2>
-          <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
-            Track reading, homework, maths, spelling, and routines for your KS1
-            and KS2 children from one clear parent dashboard.
+
+          <p className="mt-3 text-sm text-muted-foreground md:text-base">
+            Keep reading, homework, spelling, maths, and routines organised
+            through one clean parent dashboard designed for KS1 and KS2
+            families.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:w-[320px]">
+        <div className="grid gap-3 sm:grid-cols-2 lg:w-[360px]">
           <button className="rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90">
             Add new task
           </button>

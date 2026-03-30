@@ -1,20 +1,43 @@
 import SectionHeading from "../../components/SectionHeading";
+import EmptyStateCard from "../../components/app/EmptyStateCard";
 import ChildSummaryCard from "../../components/children/ChildSummaryCard";
-import { children } from "../../data/mock/children";
+import AddChildForm from "../../components/children/AddChildForm";
+import { children as initialChildren } from "../../data/mock/children";
+import useLocalStorage from "../../hooks/useLocalStorage";
+import type { Child } from "../../types/child";
 
 export default function ChildrenPage() {
+  const [children, setChildren] = useLocalStorage<Child[]>(
+    "eduk8-children",
+    initialChildren,
+  );
+
+  function handleAddChild(newChild: Child) {
+    setChildren((prevChildren) => [newChild, ...prevChildren]);
+  }
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <SectionHeading
         title="Children"
-        description="Manage learning profiles, focus areas, and weekly home study goals."
+        description="Create and manage child profiles, learning focus areas, and weekly goals for home study."
       />
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {children.map((child) => (
-          <ChildSummaryCard key={child.id} child={child} />
-        ))}
-      </div>
+      <AddChildForm onAddChild={handleAddChild} />
+
+      {children.length === 0 ? (
+        <EmptyStateCard
+          title="No child profiles yet"
+          description="Add your first child profile to start organising subjects, goals, and learning tasks."
+          actionLabel="Add child"
+        />
+      ) : (
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {children.map((child) => (
+            <ChildSummaryCard key={child.id} child={child} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

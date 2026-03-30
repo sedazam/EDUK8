@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
-import SectionHeading from "../../components/SectionHeading";
+import SectionHeader from "../../components/app/SectionHeader";
+import EmptyStateCard from "../../components/app/EmptyStateCard";
 import TaskListItem from "../../components/tasks/TaskListItem";
 import AddTaskForm from "../../components/tasks/AddTaskForm";
 
@@ -51,15 +52,16 @@ export default function TasksPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <SectionHeading
+    <div className="space-y-8">
+      <SectionHeader
+        badge="Task management"
         title="Tasks"
-        description="View, filter, and manage homework, reading, maths, spelling, and routines."
+        description="Organise, filter, and update homework, reading, maths, spelling, and routine activities."
       />
 
       <AddTaskForm children={children} onAddTask={handleAddTask} />
 
-      <div className="grid gap-4 rounded-2xl border bg-white p-4 shadow-sm md:grid-cols-2">
+      <div className="grid gap-4 rounded-3xl border bg-white p-5 shadow-sm md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-medium">
             Filter by child
@@ -67,7 +69,7 @@ export default function TasksPage() {
           <select
             value={selectedChildId}
             onChange={(e) => setSelectedChildId(e.target.value)}
-            className="w-full rounded-xl border bg-background px-3 py-2 text-sm"
+            className="w-full rounded-2xl border bg-background px-3 py-3 text-sm"
           >
             <option value="all">All children</option>
             {children.map((child) => (
@@ -85,7 +87,7 @@ export default function TasksPage() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value as FilterValue)}
-            className="w-full rounded-xl border bg-background px-3 py-2 text-sm"
+            className="w-full rounded-2xl border bg-background px-3 py-3 text-sm"
           >
             <option value="all">All statuses</option>
             <option value="completed">Completed</option>
@@ -98,9 +100,11 @@ export default function TasksPage() {
 
       <div className="space-y-4">
         {filteredTasks.length === 0 ? (
-          <div className="rounded-2xl border border-dashed bg-white p-8 text-sm text-muted-foreground shadow-sm">
-            No tasks match your current filters.
-          </div>
+          <EmptyStateCard
+            title="No matching tasks"
+            description="Try changing your filters or add a new task to keep the learning plan active."
+            actionLabel="Clear filters"
+          />
         ) : (
           filteredTasks.map((task) => {
             const child = children.find((item) => item.id === task.childId);
