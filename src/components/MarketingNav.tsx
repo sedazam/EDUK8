@@ -1,19 +1,23 @@
-import { Link, NavLink } from 'react-router-dom';
-import Logo from './Logo';
+import { Link } from "react-router-dom";
 
 export default function MarketingNav() {
   return (
-    <header className="marketing-nav">
-      <div className="container marketing-nav__inner">
-        <Link to="/" className="unstyled-link">
-          <Logo />
+    <header className="border-b bg-white">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link to="/" className="text-lg font-bold">
+          EduK8
         </Link>
 
-        <nav className="marketing-nav__links">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How it works</a>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/signup" className="button button--primary">Get started</NavLink>
+        <nav className="flex items-center gap-4 text-sm">
+          <Link to="/login" className="hover:underline">
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="rounded-lg bg-primary px-4 py-2 text-white"
+          >
+            Sign up
+          </Link>
         </nav>
       </div>
     </header>

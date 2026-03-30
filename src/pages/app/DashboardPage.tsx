@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { BookOpen, CheckCircle2, Flame, Star } from "lucide-react";
 
-import SectionHeader from "../../components/app/SectionHeader";
+import SectionHeading from "../../components/SectionHeading";
 import WelcomeBanner from "../../components/dashboard/WelcomeBanner";
 import ChildSwitcher from "../../components/dashboard/ChildSwitcher";
 import StatCard from "../../components/dashboard/StatCard";
@@ -32,7 +32,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
+      <SectionHeading
         title="Dashboard"
         description="Track progress, learning habits, and weekly momentum for your KS1 and KS2 children."
       />
