@@ -1,13 +1,13 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import AppShell from './components/AppShell';
-import DashboardPage from './pages/DashboardPage';
-import ChildrenPage from './pages/ChildrenPage';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import ReportsPage from './pages/ReportsPage';
-import SettingsPage from './pages/SettingsPage';
-import SignupPage from './pages/SignupPage';
-import TasksPage from './pages/TasksPage';
+import { Navigate, Route, Routes } from "react-router-dom";
+import AppShell from "./components/AppShell";
+import DashboardPage from "./pages/app/DashboardPage";
+import ChildrenPage from "./pages/app/ChildrenPage";
+import HomePage from "./pages/app/HomePage";
+import LoginPage from "./pages/app/LoginPage";
+import ReportsPage from "./pages/app/ReportsPage";
+import SettingsPage from "./pages/app/SettingsPage";
+import SignupPage from "./pages/app/SignupPage";
+import TasksPage from "./pages/app/TasksPage";
 
 export default function App() {
   return (
