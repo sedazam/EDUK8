@@ -6,13 +6,13 @@ export const dashboardStats = {
 };
 
 export const weeklyActivity = [
-  { day: "Mon", completed: 2 },
-  { day: "Tue", completed: 1 },
-  { day: "Wed", completed: 3 },
-  { day: "Thu", completed: 2 },
-  { day: "Fri", completed: 4 },
-  { day: "Sat", completed: 1 },
-  { day: "Sun", completed: 2 },
+  { day: "Mon", completed: 5 },
+  { day: "Tue", completed: 7 },
+  { day: "Wed", completed: 4 },
+  { day: "Thu", completed: 6 },
+  { day: "Fri", completed: 8 },
+  { day: "Sat", completed: 3 },
+  { day: "Sun", completed: 6 },
 ];
 
 export const subjectProgress = [
