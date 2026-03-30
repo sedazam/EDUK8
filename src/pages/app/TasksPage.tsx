@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import SectionHeader from "../../components/app/SectionHeader";
+import SectionHeading from "../../components/SectionHeading";
 import TaskListItem from "../../components/tasks/TaskListItem";
 import AddTaskForm from "../../components/tasks/AddTaskForm";
 
@@ -52,7 +52,7 @@ export default function TasksPage() {
 
   return (
     <div className="space-y-6">
-      <SectionHeader
+      <SectionHeading
         title="Tasks"
         description="View, filter, and manage homework, reading, maths, spelling, and routines."
       />
