@@ -1,14 +1,28 @@
 import { useMemo, useState } from "react";
 
-import SectionHeading from "../../components/SectionHeading";
+import SectionHeader from "../../components/app/SectionHeader";
 import TaskListItem from "../../components/tasks/TaskListItem";
-import { children } from "../../data/mock/children";
-import { tasks } from "../../data/mock/tasks";
-import type { TaskStatus } from "../../types/task";
+import AddTaskForm from "../../components/tasks/AddTaskForm";
+
+import { children as initialChildren } from "../../data/mock/children";
+import { tasks as initialTasks } from "../../data/mock/tasks";
+import useLocalStorage from "../../hooks/useLocalStorage";
+
+import type { Child } from "../../types/child";
+import type { Task, TaskStatus } from "../../types/task";
 
 type FilterValue = "all" | TaskStatus;
 
 export default function TasksPage() {
+  const [children] = useLocalStorage<Child[]>(
+    "eduk8-children",
+    initialChildren,
+  );
+  const [tasks, setTasks] = useLocalStorage<Task[]>(
+    "eduk8-tasks",
+    initialTasks,
+  );
+
   const [selectedChildId, setSelectedChildId] = useState<string>("all");
   const [selectedStatus, setSelectedStatus] = useState<FilterValue>("all");
 
@@ -22,14 +36,28 @@ export default function TasksPage() {
 
       return childMatches && statusMatches;
     });
-  }, [selectedChildId, selectedStatus]);
+  }, [tasks, selectedChildId, selectedStatus]);
+
+  function handleAddTask(newTask: Task) {
+    setTasks((prevTasks) => [newTask, ...prevTasks]);
+  }
+
+  function handleStatusChange(taskId: string, nextStatus: TaskStatus) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, status: nextStatus } : task,
+      ),
+    );
+  }
 
   return (
     <div className="space-y-6">
-      <SectionHeading
+      <SectionHeader
         title="Tasks"
         description="View, filter, and manage homework, reading, maths, spelling, and routines."
       />
+
+      <AddTaskForm children={children} onAddTask={handleAddTask} />
 
       <div className="grid gap-4 rounded-2xl border bg-white p-4 shadow-sm md:grid-cols-2">
         <div>
@@ -77,7 +105,14 @@ export default function TasksPage() {
           filteredTasks.map((task) => {
             const child = children.find((item) => item.id === task.childId);
 
-            return <TaskListItem key={task.id} task={task} child={child} />;
+            return (
+              <TaskListItem
+                key={task.id}
+                task={task}
+                child={child}
+                onStatusChange={handleStatusChange}
+              />
+            );
           })
         )}
       </div>
