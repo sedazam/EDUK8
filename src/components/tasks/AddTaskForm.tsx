@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { toast } from "sonner";
 import type { Child } from "../../types/child";
 import type { Task, TaskStatus, TaskSubject } from "../../types/task";
-
+import { toast } from "sonner";
 interface AddTaskFormProps {
   children: Child[];
   onAddTask: (task: Task) => void;
@@ -16,9 +17,19 @@ export default function AddTaskForm({ children, onAddTask }: AddTaskFormProps) {
     e.preventDefault();
 
     if (!title.trim()) {
-      alert("Enter task title");
+      toast.error("Please complete all task fields.");
       return;
     }
+
+    // Example validation for estimatedMinutes and rewardPoints (if you add these as inputs)
+    // if (isNaN(estimatedMinutes)) {
+    //   toast.error("Estimated minutes must be a valid number.");
+    //   return;
+    // }
+    // if (isNaN(rewardPoints)) {
+    //   toast.error("Reward points must be a valid number.");
+    //   return;
+    // }
 
     const newTask: Task = {
       id: `task-${Date.now()}`,
@@ -32,6 +43,7 @@ export default function AddTaskForm({ children, onAddTask }: AddTaskFormProps) {
     };
 
     onAddTask(newTask);
+    toast.success("Task added successfully.");
     setTitle("");
   }
 

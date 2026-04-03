@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { useState } from "react";
 import type { Child, KeyStage } from "../../types/child";
 
@@ -25,12 +26,12 @@ export default function AddChildForm({ onAddChild }: AddChildFormProps) {
     const parsedWeeklyGoal = Number(weeklyGoal);
 
     if (!trimmedName || !trimmedYearGroup || trimmedSubjects.length === 0) {
-      alert("Please fill in all child details.");
+      toast.error("Please fill in all child details.");
       return;
     }
 
     if (Number.isNaN(parsedWeeklyGoal) || parsedWeeklyGoal <= 0) {
-      alert("Weekly goal must be a valid number.");
+      toast.error("Weekly goal must be a valid number.");
       return;
     }
 
@@ -47,6 +48,7 @@ export default function AddChildForm({ onAddChild }: AddChildFormProps) {
     };
 
     onAddChild(newChild);
+    toast.success("Child profile added.");
 
     setName("");
     setYearGroup("");
