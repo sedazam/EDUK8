@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import AppShell from "./components/app/AppShell";
+import AppShell from "./components/tasks/AppShell";
 import ProtectedRoute from "./components/app/ProtectedRoute";
 
 import Index from "./pages/Index";

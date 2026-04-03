@@ -1,31 +1,43 @@
-# EduK8 Happy Home Starter
+# EduK8 Happy Home
 
-A clean React + TypeScript + Vite starter for a KS1 and KS2 parent learning dashboard.
+EduK8 Happy Home is a parent-focused learning dashboard designed for KS1 and KS2 families. It helps parents organise homework, reading, spelling, maths practice, and home learning routines in one clean interface.
 
-## What is included
+## Features
 
-- Marketing homepage
-- Login and signup pages
 - Parent dashboard
-- Children page with add-child form
-- Tasks page with add-task form and status updates
-- Reports page with charts
-- Settings page
-- LocalStorage persistence for demo data
+- Child profile management
+- Learning task management
+- Progress reporting
+- Local persistence
+- Protected app routes
+- Toast notifications
+- Supabase-ready backend structure
 
-## Run locally
+## Tech stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Recharts
+- Sonner
+- Supabase
+
+## Routes
+
+- `/`
+- `/login`
+- `/signup`
+- `/app/dashboard`
+- `/app/children`
+- `/app/tasks`
+- `/app/reports`
+- `/app/settings`
+
+## Local setup
 
 ```bash
 npm install
 npm run dev
 ```
-
-Then open the local URL shown in the terminal.
-
-## Suggested next upgrades
-
-1. Add Supabase auth
-2. Protect `/app/*` routes
-3. Move children and tasks into database tables
-4. Add toasts and stronger validation
-5. Add a proper README with screenshots for portfolio use

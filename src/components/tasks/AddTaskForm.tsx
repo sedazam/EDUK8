@@ -2,7 +2,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 import type { Child } from "../../types/child";
 import type { Task, TaskStatus, TaskSubject } from "../../types/task";
-import { toast } from "sonner";
 interface AddTaskFormProps {
   children: Child[];
   onAddTask: (task: Task) => void;
